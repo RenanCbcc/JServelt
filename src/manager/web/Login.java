@@ -5,11 +5,9 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import manager.Usuario;
 import manager.dao.UsuarioDAO;
@@ -34,9 +32,8 @@ public class Login extends HttpServlet {
 		if (user == null) {
 			writer.println("<h1>There is no such user. Try again:</h1><br/>");
 		} else {
-			HttpSession session = request.getSession();
-			session.setAttribute("user.loggedin", user);
-			writer.println("<h1>Wellcome, " + email + "</h1><br/>");
+			request.getSession().setAttribute("user.loggedin", user);
+			resp.sendRedirect("/index.html");
 		}
 
 		writer.println("</body>");

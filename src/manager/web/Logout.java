@@ -1,8 +1,8 @@
 package manager.web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,12 +17,8 @@ public class Logout extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getSession().removeAttribute("user.loggedin");
-		PrintWriter writer = resp.getWriter();
-		writer.println("<html>");
-		writer.println("<body>");
-		writer.println("<h1>User unlogged successfully.</h1><br/>");
-		writer.println("</body>");
-		writer.println("</html>");
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/pages/logout.html");
+		rd.forward(req, resp);
 
 	}
 

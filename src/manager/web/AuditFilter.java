@@ -29,13 +29,13 @@ public class AuditFilter implements Filter {
 	}
 
 	private String getUsuario(HttpServletRequest request, HttpServletResponse response) {
-		String user = "usernot.loggedin>";
-		Usuario usuario = (Usuario) request.getAttribute("user.loggedin");
-		if (usuario == null) {
-			return user;
+
+		Usuario user = (Usuario) request.getSession().getAttribute("user.loggedin");
+		if (user == null) {
+			return "usernot.loggedin>";
 		} else {
 
-			return usuario.getEmail();
+			return user.getEmail();
 		}
 	}
 }

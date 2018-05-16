@@ -4,25 +4,19 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/site.css">
-<title>LogIn</title>
+<title>Enterprise page</title>
 </head>
 <body>
 
 	<main>
-	<h1 class="titulo-principal">Login in the system</h1>
-	
-	<div class="container">
-		<h2 class="subtitulo-texto">Write down the your email</h2>
-	
-		<form action="login" method="POST">
+	<h1 class="titulo-principal">Enterprise</h1>
 
-			<p>email:</p>
-			<input type="email" name="email"> 
-			<p>password:</p>
-			<input type="password" name="passwd"> 
-			
-			<input type="submit"value="send">
-		</form>
+	<div class="container">
+
+		<h2 class="subtitulo-texto">A new Enterprise was inserted into
+			database!</h2>
+		<p>${enterprise.getNome()}</p>
+
 	</div>
 	</main>
 <aside class="navegacao-site">
@@ -36,7 +30,5 @@
 		</nav>
 	</aside>
 	<footer class="rodape-pagina"> &copy; Renan Rosa 2018 </footer>
-</body>
-
 </body>
 </html>
