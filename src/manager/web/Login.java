@@ -9,6 +9,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import manager.Usuario;
 import manager.dao.UsuarioDAO;
@@ -19,10 +20,10 @@ public class Login extends HttpServlet {
 	private static final long serialVersionUID = 57734454038431397L;
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
 
-		String email = req.getParameter("email");
-		String password = req.getParameter("passwd");
+		String email = request.getParameter("email");
+		String password = request.getParameter("passwd");
 
 		Usuario user = new UsuarioDAO().buscaPorEmailESenha(email, password);
 
@@ -33,8 +34,8 @@ public class Login extends HttpServlet {
 		if (user == null) {
 			writer.println("<h1>There is no such user. Try again:</h1><br/>");
 		} else {
-			Cookie cookie = new Cookie("user.loggedin", email);// Spaces are not allowed, remember!
-			resp.addCookie(cookie);
+			HttpSession session = request.getSession();
+			session.setAttribute("user.loggedin", user);
 			writer.println("<h1>Wellcome, " + email + "</h1><br/>");
 		}
 

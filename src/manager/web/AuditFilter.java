@@ -8,8 +8,10 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import manager.Usuario;
 
 @WebFilter(urlPatterns = "/*")
 public class AuditFilter implements Filter {
@@ -20,27 +22,20 @@ public class AuditFilter implements Filter {
 
 		HttpServletRequest req = (HttpServletRequest) request;
 		String uri = req.getRequestURI();
-		Cookie cookie = getUsuario(req);
-		String user = "usernot.loggedin>";
-
-		if (cookie != null)
-			user = cookie.getValue();
+		String user = getUsuario(req, (HttpServletResponse) response);
 
 		System.out.println(user + " accessing: " + uri);
 		chain.doFilter(request, response); // Continue doing whatever you was doing.
 	}
 
-	private Cookie getUsuario(HttpServletRequest req) {
+	private String getUsuario(HttpServletRequest request, HttpServletResponse response) {
+		String user = "usernot.loggedin>";
+		Usuario usuario = (Usuario) request.getAttribute("user.loggedin");
+		if (usuario == null) {
+			return user;
+		} else {
 
-		Cookie[] cookies = req.getCookies();
-
-		for (Cookie cookie : cookies) {
-			if (cookie.getName().equals("usuario.logado")) {
-				return cookie;
-			}
+			return usuario.getEmail();
 		}
-
-		return null;
 	}
-
 }
