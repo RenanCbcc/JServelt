@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,10 +63,18 @@
 		</h2>
 		<p>Now, I want to <a href="formLogout.html" >logout</a>
 		</p>
+		
+		
+		
+		
 	</div>
 	</main>
 	<aside class="navegacao-site">
 		<h1>Learn more</h1>
+		<c:if test="${not empty userLoggedin}">
+		Logged as ${userLoggedin.email}
+		</c:if>
+		
 		<nav>
 			<ul>
 				<li>Programming</li>

@@ -30,9 +30,9 @@ public class AuditFilter implements Filter {
 
 	private String getUsuario(HttpServletRequest request, HttpServletResponse response) {
 
-		Usuario user = (Usuario) request.getSession().getAttribute("user.loggedin");
+		Usuario user = (Usuario) request.getSession().getAttribute("userLoggedin");
 		if (user == null) {
-			return "usernot.loggedin>";
+			return "userNotLoggedin>";
 		} else {
 
 			return user.getEmail();

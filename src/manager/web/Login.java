@@ -32,8 +32,8 @@ public class Login extends HttpServlet {
 		if (user == null) {
 			writer.println("<h1>There is no such user. Try again:</h1><br/>");
 		} else {
-			request.getSession().setAttribute("user.loggedin", user);
-			resp.sendRedirect("/index.html");
+			request.getSession().setAttribute("userLoggedin", user);
+			resp.sendRedirect("http://localhost:8080/manager/");
 		}
 
 		writer.println("</body>");

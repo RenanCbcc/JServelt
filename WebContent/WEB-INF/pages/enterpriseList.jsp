@@ -1,5 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -7,22 +8,28 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/site.css">
-<title>Enterprise page</title>
+<title>Enterprise List page</title>
 </head>
 <body>
 
 	<main>
-	<h1 class="titulo-principal">Enterprise</h1>
+	<h1 class="titulo-principal">Enterprise List</h1>
 
 	<div class="container">
 
-		<h2 class="subtitulo-texto">A new Enterprise was inserted into
-			database!</h2>
-		<p>${enterprise.getNome()}</p>
+		<h2 class="subtit ulo-texto">Exhibiting a list of all Enterprise
+			inserted into database!</h2>
 
+		<ul>
+			<c:forEach var="enterprise" items="${enterprises}">
+				<li>${enterprise.id}:${enterprise.nome}</li>
+			</c:forEach>
+		</ul>
+		
 	</div>
 	</main>
-<aside class="navegacao-site">
+	
+	<aside class="navegacao-site">
 		<h1>Other</h1>
 		<nav>
 			<ul>

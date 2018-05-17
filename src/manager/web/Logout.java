@@ -16,7 +16,7 @@ public class Logout extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getSession().removeAttribute("user.loggedin");
+		req.getSession().removeAttribute("userLoggedin");
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/pages/logout.html");
 		rd.forward(req, resp);
 
