@@ -1,31 +1,23 @@
 package manager.web;
 
-import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import manager.Empresa;
 import manager.dao.EmpresaDAO;
 
-@WebServlet(urlPatterns = "/newEnterprise")
-public class NewEnterprise extends HttpServlet {
-
-	private static final long serialVersionUID = -3906652746025906919L;
+public class NewEnterprise implements Task {
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public String execute(HttpServletRequest request, HttpServletResponse response) {
+		String name = request.getParameter("name");
 
-		String nome = req.getParameter("name");
-		Empresa entreprise = new Empresa(nome);
-		new EmpresaDAO().adiciona(entreprise);
-		req.setAttribute("enterprise", entreprise);
-		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/pages/enterprise.jsp");
-		rd.forward(req, resp);
+		Empresa empresa = new Empresa(name);
+		new EmpresaDAO().adiciona(empresa);
+
+		request.setAttribute("nome", name);
+
+		return "/WEB-INF/pages/enterprise.jsp";
 
 	}
 }

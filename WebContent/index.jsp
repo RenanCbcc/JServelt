@@ -41,40 +41,32 @@
 		<p>
 			To see whether the server is working as as expected,run the command
 			on you browser:
-			<site> http://localhost:8080/manager/search?filter=Alura </site>
+			<site>
+			http://localhost:8080/manager/doesEverything?task=SearchEntreprise </site>
 		</p>
-		
-		<h2>
-		New Enterprise
-		</h2>
-		<p>Now, I want to add a new enterprise, to make sure that all that stuff is actually
-		working and it is not silly or a complete waste of time.
-		<a href="formEnterprise.html" >Nova Empresa</a>
+
+		<h2>New Enterprise</h2>
+		<p>
+			Now, I want to add a new enterprise, to make sure that all that stuff
+			is actually working and it is not silly or a complete waste of time.
+			<a href="formEnterprise.html">Nova Empresa</a>
 		</p>
-		
-		<h2>
-		Sing In
-		</h2>
-		<p>Now, I want to <a href="formLogin.html" >login</a>
-		</p>
-		
-		<h2>
-		Logout
-		</h2>
-		<p>Now, I want to <a href="formLogout.html" >logout</a>
-		</p>
-		
-		
-		
-		
+
+
+
 	</div>
 	</main>
 	<aside class="navegacao-site">
 		<h1>Learn more</h1>
 		<c:if test="${not empty userLoggedin}">
 		Logged as ${userLoggedin.email}
+		<a href="formLogout.html">logout</a>
 		</c:if>
 		
+		<c:if test="${ empty userLoggedin}">
+			<a href="formLogin.html">login</a>
+		</c:if>
+
 		<nav>
 			<ul>
 				<li>Programming</li>
