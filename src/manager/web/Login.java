@@ -3,8 +3,8 @@ package manager.web;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import manager.Usuario;
 import manager.dao.UsuarioDAO;
+import manager.models.Usuario;
 
 public class Login implements Task {
 

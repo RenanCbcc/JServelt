@@ -1,4 +1,4 @@
-package manager;
+package manager.models;
 
 public class Empresa {
 

@@ -11,7 +11,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import manager.Usuario;
+import manager.models.Usuario;
 
 @WebFilter(urlPatterns = "/*")
 public class AuditFilter implements Filter {

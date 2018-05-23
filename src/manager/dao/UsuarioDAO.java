@@ -3,7 +3,7 @@ package manager.dao;
 import java.util.HashMap;
 import java.util.Map;
 
-import manager.Usuario;
+import manager.models.Usuario;
 
 public class UsuarioDAO {
 

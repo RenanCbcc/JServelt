@@ -5,8 +5,8 @@ import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import manager.Empresa;
 import manager.dao.EmpresaDAO;
+import manager.models.Empresa;
 
 
 public class SearchEntreprise implements Task {
