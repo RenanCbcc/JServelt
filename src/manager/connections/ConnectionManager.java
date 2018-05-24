@@ -6,9 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 
+import manager.dao.CategoriaDAO;
 import manager.dao.ProdutoDAO;
+import manager.models.Categoria;
 import manager.models.Produto;
 
 public class ConnectionManager {
@@ -21,7 +22,21 @@ public class ConnectionManager {
 		// testarInclusaoSemInjecao();
 		// testarInclusaoSemautoCommit();
 		// testarPool();
-		testarDao();
+		// testarDao();
+		testarCategorias();
+	}
+
+	private static void testarCategorias() {
+		try (Connection connection = new Database().getConnection()) {
+
+			CategoriaDAO dao = new CategoriaDAO(connection);
+			for (Categoria p : dao.listar()) {
+				System.out.println(p);
+			}
+
+		} catch (Exception e) {
+		}
+
 	}
 
 	private static void testarDao() throws SQLException, PropertyVetoException {
