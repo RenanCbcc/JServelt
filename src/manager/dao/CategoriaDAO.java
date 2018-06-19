@@ -67,17 +67,6 @@ public class CategoriaDAO {
 
 	}
 
-	public List<Produto> buscar(Categoria categoria) throws SQLException {
-		List<Produto> produtos = new ArrayList<>();
-		String sql = "Select * from Produto where categoria_id = ?";
-		try (PreparedStatement statment = connection.prepareStatement(sql)) {
-			statment.setInt(1, categoria.getId());
-			statment.executeQuery();
-			tranformaResultadosEmProdutos(produtos, statment);
-		}
-		return produtos;
-
-	}
 
 	private void tranformaResultadosEmProdutos(List<Produto> produtos, PreparedStatement statment) throws SQLException {
 		try (ResultSet resultSet = statment.getResultSet()) {
@@ -91,6 +80,18 @@ public class CategoriaDAO {
 			resultSet.close();
 			connection.close();
 		}
+	}
+
+	public List<Produto> buscar(Categoria categoria) throws SQLException {
+		List<Produto> produtos = new ArrayList<>();
+		String sql = "Select * from Produto where categoria_id = ?";
+		try (PreparedStatement statment = connection.prepareStatement(sql)) {
+			statment.setInt(1, categoria.getId());
+			statment.executeQuery();
+			tranformaResultadosEmProdutos(produtos, statment);
+		}
+		return produtos;
+
 	}
 
 	private void adicionar(Categoria categoria, PreparedStatement statment) throws SQLException {
